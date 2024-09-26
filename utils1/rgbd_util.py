@@ -38,7 +38,9 @@ def processDepthImage(z, missingMask, C):
     # Compute the direction of gravity
     yDir = getYDir(N2, yDirParam_angleThresh, yDirParam_iter, yDirParam_y0)
     y0 = np.array([[0, 1, 0]]).T
-    R = getRMatrix(y0, yDir)
+    R = np.array([[-0.66695412, -0.69832438, -0.25983699],
+       [ 0.69832438, -0.70745629,  0.10885153],
+       [-0.25983699, -0.10885153,  0.95949783]])
 
     # rotate the pc and N
     NRot = rotatePC(N, R.T)

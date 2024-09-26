@@ -108,7 +108,7 @@ def getYDirHelper(N, y0, thresh, num_iter):
     nn = nn[:,idx]
 
     # Set it up as a optimization problem
-    yDir = y0;
+    yDir = y0
     for i in range(num_iter):
         sim0 = np.dot(yDir.T, nn)
         indF = abs(sim0) > np.cos(thresh)       # calculate 'floor' set.    |sin(theta)| < sin(thresh) ==> |cos(theta)| > cos(thresh)
@@ -151,9 +151,9 @@ def getRMatrix(yi, yf):
     if (abs(phi) > 0.1):
         phi = phi * (np.pi / 180)
 
-        s_hat = np.array([[0, -ax[2], ax[1]],
-                          [ax[2], 0, -ax[0]],
-                          [-ax[1], ax[0], 0]])
+        s_hat = np.array([[0, -ax[2][0], ax[1][0]],
+                          [ax[2][0], 0, -ax[0][0]],
+                          [-ax[1][0], ax[0][0], 0]])
         R = np.eye(3) + np.sin(phi) * s_hat + (1 - np.cos(phi)) * np.dot(s_hat, s_hat)      # dot???
     else:
         R = np.eye(3)
